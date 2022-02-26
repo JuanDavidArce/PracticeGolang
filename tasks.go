@@ -8,15 +8,15 @@ type task struct {
 	complete    bool
 }
 
-func (t task) markComplete() {
+func (t *task) markComplete() {
 	t.complete = true
 }
 
-func (t task) updateDescription(description string) {
+func (t *task) updateDescription(description string) {
 	t.description = description
 }
 
-func (t task) updateName(name string) {
+func (t *task) updateName(name string) {
 	t.name = name
 }
 func main() {
