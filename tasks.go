@@ -14,6 +14,23 @@ func (t *taskList) removeFromList(index int) {
 	t.tasks = append(t.tasks[:index], t.tasks[index+1:]...)
 }
 
+func (t *taskList) printList() {
+	for _, task := range t.tasks {
+		fmt.Println("Name", task.name)
+		fmt.Println("Description", task.description)
+	}
+}
+
+func (t *taskList) printListComplete() {
+	for _, task := range t.tasks {
+		if task.complete {
+			fmt.Println("Name", task.name)
+			fmt.Println("Description", task.description)
+		}
+
+	}
+}
+
 type task struct {
 	name        string
 	description string
@@ -52,27 +69,15 @@ func main() {
 	list := taskList{
 		tasks: []task{t1, t2},
 	}
-	fmt.Println(list.tasks[0])
 	list.addToList(t3)
+	list.printList()
+	list.tasks[0].complete = true
+	fmt.Println("Task complete")
+	list.printListComplete()
 
-	// for i := 0; i < len(list.tasks); i++ {
-	// 	fmt.Println("Index", i, "nombre", list.tasks[i].name)
-	// }
+	mapTasks := make(map[string]*taskList)
 
-	// for index, value := range list.tasks {
-	// 	fmt.Println("Index", index, "nombre", value.name)
-	// }
-	for i := 0; i < 10; i++ {
-		if i == 5 {
-			break
-		}
-		fmt.Println(i)
-	}
+	mapTasks["Juan David"] = &list
+	fmt.Println(mapTasks)
 
-	for i := 0; i < 10; i++ {
-		if i == 5 {
-			continue
-		}
-		fmt.Println(i)
-	}
 }
