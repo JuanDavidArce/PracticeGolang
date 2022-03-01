@@ -32,11 +32,7 @@ func (t *task) updateName(name string) {
 	t.name = name
 }
 func main() {
-	t := task{
-		name:        "Completar curso de golangooooo",
-		description: "Completar el curso esta semana",
-		complete:    false,
-	}
+
 	t1 := task{
 		name:        "Completar curso de python",
 		description: "Completar el curso esta semana",
@@ -47,13 +43,36 @@ func main() {
 		description: "Completar el curso esta semana",
 		complete:    false,
 	}
+	t3 := task{
+		name:        "Completar curso de node",
+		description: "Completar el curso esta semana",
+		complete:    false,
+	}
 
 	list := taskList{
 		tasks: []task{t1, t2},
 	}
 	fmt.Println(list.tasks[0])
-	list.addToList(t)
-	fmt.Println(len(list.tasks))
-	list.removeFromList(1)
-	fmt.Println(len(list.tasks))
+	list.addToList(t3)
+
+	// for i := 0; i < len(list.tasks); i++ {
+	// 	fmt.Println("Index", i, "nombre", list.tasks[i].name)
+	// }
+
+	// for index, value := range list.tasks {
+	// 	fmt.Println("Index", index, "nombre", value.name)
+	// }
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			break
+		}
+		fmt.Println(i)
+	}
+
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			continue
+		}
+		fmt.Println(i)
+	}
 }
