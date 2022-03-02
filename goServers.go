@@ -20,6 +20,8 @@ func revisarServidor(servidor string, c chan string) {
 func main() {
 	chanel := make(chan string)
 	inicio := time.Now()
+	i := 0
+
 	servidores := []string{
 		"http://platzi.com",
 		"http://google.com",
@@ -27,13 +29,18 @@ func main() {
 		"http://instagram.com",
 	}
 
-	for _, servidor := range servidores {
-		go revisarServidor(servidor, chanel)
+	for i < 2 {
+
+		for _, servidor := range servidores {
+			go revisarServidor(servidor, chanel)
+		}
+
+		time.Sleep(1 * time.Second)
+		fmt.Println(<-chanel)
+
+		i++
 	}
 
-	for i := 0; i < len(servidores); i++ {
-		fmt.Println(<-chanel)
-	}
 	tiempoPasado := time.Since(inicio)
 	fmt.Printf("Done in %s", tiempoPasado)
 }
